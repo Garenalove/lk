@@ -1,0 +1,16 @@
+database:
+    name: avspam_db
+    user: avspam
+    password: 1b5d8b60-43bf-4165-be71-7e6aa861f5a9
+
+server:
+    DEBUG: True
+    SQLALCHEMY_DATABASE_URI: postgresql://avspam:1b5d8b60-43bf-4165-be71-7e6aa861f5a9@localhost:5432/avspam_db
+    SQLALCHEMY_TRACK_MODIFICATIONS: False
+    SECURITY_PASSWORD_SALT: megaSecretSalt
+    SECURITY_PASSWORD_HASH: bcrypt
+    SECRET_KEY: UltraMegaSecretKey
+    WTF_CSRF_SECRET_KEY: SuppaPowerfulSecretKey
+    SECURITY_REGISTERABLE: True
+    SECURITY_CONFIRMABLE: False
+    SECURITY_SEND_REGISTER_EMAIL: False

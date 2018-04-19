@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Index page
+{% endblock %}
+
+{% block body %}
+    <div class="offset-md-4 col-md-4">
+        <h2>Ваш баланс: {{current_user.balance}}</h2>
+        <br>
+        <h1>Список аддонов</h1>
+        {% for license in current_user.licenses %}
+        <p> {{license.addon.name}} - Дата окончания: {{license.end_time}} </p>
+        {% endfor %}
+        <a href="/logout">
+            <button class="btn btn-info">Выйти</button>
+        </a>
+        <form action="{{url_for('account.account_page')}}"  method="post">
+            <button class="btn" name="money" value="1">Получить много денег</button>
+            {% if not current_user.has_role('admin') %}
+            <button class="btn" name="admin" value="1">Стать админом</button>
+            {% else %}
+            <button class="btn" name="simple_user" value="1">Перестать быть админом</button>
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}

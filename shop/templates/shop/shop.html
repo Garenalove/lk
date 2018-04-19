@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Index page
+{% endblock %}
+
+{% block body %}
+    <ul>
+        {% for addon in addons %}
+        <li>
+            <a href="{{url_for('shop.addon_detail', slug=addon.slug)}}">{{addon.name}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,5 @@
+flask
+flask-security
+flask-admin
+flask-migrate
+flask-SQLAlchemy
