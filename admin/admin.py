@@ -9,6 +9,6 @@ from .admin_custimoize import UserModelView, AddonModelView, HomeAdminView
 def init_admin():
     admin = Admin(server, 'Admin', index_view=HomeAdminView(name='Home'))
     admin.add_view(UserModelView(User, session))
-    admin.add_view(AddonModelView(Addon, session))
+    admin.add_view(AddonModelView(Product, session))
     admin.add_view(ModelView(Role, session))
 

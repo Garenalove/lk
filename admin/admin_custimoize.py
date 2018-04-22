@@ -2,7 +2,7 @@ from flask_admin.contrib.sqla import ModelView
 from flask_security import current_user
 from flask import redirect, url_for
 from flask_admin import AdminIndexView
-from database.models import Addon
+from database.models import Product
 
 
 class AdminMixin:
@@ -23,11 +23,10 @@ class HomeAdminView(AdminMixin, AdminIndexView):
 
 class AddonModelView(AdminMixin, ModelView):
 
-    form_columns = ['name', 'description', 'cost', 'period']
-
     def on_model_change(self, form, model, is_created):
-        if isinstance(model, Addon):
-            model.generate_slug()
+        if isinstance(model, Product):
+            if not model.link:
+                model.generate_link()
         return super(AddonModelView, self).on_model_change(form,model,is_created)
 
 

@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, request
 from database.queries import addons
-from database.models import Addon
+from database.models import Product
 from flask_security import current_user
 from database.models import License, User
 from server import db
@@ -18,7 +18,7 @@ def shop():
 def addon_detail(slug):
     response = None
     license_ = None
-    addon = Addon.query.filter(Addon.slug == slug).first()
+    addon = Product.query.filter(Product.link == slug).first()
     if current_user.is_authenticated:
         license_ = current_user.is_addon(addon)
     if request.method == 'POST' and current_user.is_authenticated:

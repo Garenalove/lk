@@ -5,7 +5,7 @@ from ..database import session
 from ..models.computer import Computer
 from ..models.user import User
 from ..models.license import License
-from ..models.addon import Addon
+from ..models.product import Product
 from ..models.role import Role
 
 def query_computers(mask: Optional[str] = None, deleted: bool = False) -> Query:
@@ -45,7 +45,7 @@ def query_addons(name: Optional[str] = None,
                  period: Optional[int] = None,
                  slug: Optional[str] = None,
                  deleted: bool = False) -> Query:
-    query = session.query(Addon).filter_by(deleted=deleted)
+    query = session.query(Product).filter_by(deleted=deleted)
     if name:
         query.filter_by(name=name)
     if description:
@@ -56,10 +56,10 @@ def query_addons(name: Optional[str] = None,
         query.filter_by(period=period)
     if slug:
         query.filter_by(slug=slug)
-    return query.order_by(Addon.name.asc())
+    return query.order_by(Product.name.asc())
 
 
-def query_license(addon: Optional[Addon] = None,
+def query_license(addon: Optional[Product] = None,
                   end_time: Optional[datetime] = None,
                   deleted: bool = False) -> Query:
     query = session.query(License).filter_by(deleted=deleted)
@@ -112,7 +112,7 @@ def addon(name: Optional[str] = None,
           cost: Optional[float] = None,
           period: Optional[int] = None,
           slug: Optional[str] = None,
-          deleted: bool = False) -> Addon:
+          deleted: bool = False) -> Product:
     return query_addons(
         name=name,
         description=description,
@@ -126,7 +126,7 @@ def addon(name: Optional[str] = None,
 def addons(description: Optional[str] = None,
            cost: Optional[float] = None,
            period: Optional[int] = None,
-           deleted: bool = False) -> List[Addon]:
+           deleted: bool = False) -> List[Product]:
     return query_addons(
         description=description,
         cost=cost,
@@ -135,7 +135,7 @@ def addons(description: Optional[str] = None,
     ).all()
 
 
-def license(addon: Optional[Addon] = None, end_time: Optional[datetime] = None, deleted: bool = False) -> License:
+def license(addon: Optional[Product] = None, end_time: Optional[datetime] = None, deleted: bool = False) -> License:
     return query_license(
         addon=addon,
         end_time=end_time,
@@ -143,7 +143,7 @@ def license(addon: Optional[Addon] = None, end_time: Optional[datetime] = None, 
     ).first()
 
 
-def licenses(addon: Optional[Addon] = None,
+def licenses(addon: Optional[Product] = None,
              end_time: Optional[datetime] = None,
              deleted: bool = False) -> List[License]:
     return query_license(
