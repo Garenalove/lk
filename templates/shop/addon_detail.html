@@ -7,12 +7,12 @@
 {% block body %}
     <div>
         <div class="offset-md-4 col-md-4">
-        <h1>{{addon.name}}</h1>
-        <p>{{addon.description}}</p>
+        <h1>{{product.name}}</h1>
+        <p>{{product.description}}</p>
         <p>Цена: {{addon.cost}} рублей</p>
         <p>Период: {{addon.period}} дней</p>
         {% if current_user.is_authenticated and not license_ %}
-            <form action="{{url_for('shop.addon_detail', slug=addon.slug)}}", method="post">
+            <form action="{{url_for('shop.product_detail', link=product.link)}}", method="post">
                 <button name="bbutton" value="buy" {% if license_ %}disabled{% endif %}>
                     Купить
                 </button>

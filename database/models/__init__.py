@@ -8,6 +8,7 @@ from .role_user import role_user
 from .cash_withdrawal import CashWithdrawal
 from .promo_code import PromoCode
 from .purchase import Purchase
+from .release import Release
 
 
 __all__ = ('CRUD',
@@ -19,4 +20,5 @@ __all__ = ('CRUD',
            'role_user',
            'CashWithdrawal',
            'PromoCode',
-           'Purchase')
+           'Purchase',
+           'Release')

@@ -5,7 +5,7 @@ from database.models.role import Role
 from server import db
 
 
-account_blueprint = Blueprint('account', __name__, template_folder='templates')
+account_blueprint = Blueprint('account', __name__)
 
 
 @account_blueprint.route('/', methods=['POST', 'GET'])

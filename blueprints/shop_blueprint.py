@@ -6,7 +6,7 @@ from database.models import License, User
 from server import db
 
 
-shop_blueprint = Blueprint('shop', __name__, template_folder='templates')
+shop_blueprint = Blueprint('shop', __name__)
 
 
 @shop_blueprint.route('/')

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, JSON, DateTime, Integer, Boolean
+from sqlalchemy import Column, ForeignKey, String, DateTime, Integer, Boolean
 from datetime import datetime as python_datetime
 from ..database import Base
 from .crud import CRUD
@@ -13,7 +13,7 @@ class CashWithdrawal(CRUD, Base.Model):
     user_id = Column(UUID(as_uuid=True), ForeignKey('user_.id'))
     datetime = Column(DateTime, nullable=False, unique=False)
     amount = Column(Integer, nullable=False, unique=False)
-    information = Column(JSON, nullable=False, unique=False)
+    information = Column(String(500), nullable=False, unique=False)
     is_done = Column(Boolean, nullable=False, unique=False)
     executor_id = Column(UUID(as_uuid=True), nullable=False, unique=False)
 

@@ -6,9 +6,9 @@
 
 {% block body %}
     <ul>
-        {% for addon in addons %}
+        {% for product in products %}
         <li>
-            <a href="{{url_for('shop.addon_detail', slug=addon.slug)}}">{{addon.name}}</a>
+            <a href="{{url_for('shop.product_detail', link=product.link)}}">{{addon.name}}</a>
         </li>
         {% endfor %}
     </ul>
